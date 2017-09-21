@@ -1,69 +1,271 @@
 @charset "utf-8";
+/* CSS Document */
 
+/* HTML is the root element. We are setting font-size for HTML to use it to calculate other font-sizes using the rem (root element) font size unit */
 html{
     font-size:15px;
 }
 body{
+    /* background-color will change the background of the targeted element */   
     background-color: #7F8C8D;
+    /* you can also set a background image, which will go over top of the color (if the image is not large enough to cover the whole background, the colour will be there instead) - however, backgrounds repeat */
     background-image: url("../images/white_brick_wall.png");
+    /* If the image is smaller than the area you can set background repeat property 
+    to repeat the background in one direction or not to repeat at all or repeat throughout
+    repeat-x, repeat-y, no-repeat
+    */
     background-repeat: no-repeat;
+    /*
+        background position can be set to place a non-repeating background of an element at a certain position 
+        the first value is x and the second is y
+    */
     background-position: center 20px;
+    /*contain, cover, length height*/
     background-size: cover;
+    /* 
+        You can use background property to set different sub properties at once
+        color image repeat x-position y-position
+    */
     background: #7F8C8D url("../images/white_brick_wall.png") repeat left top;
 }
+/* Targeting and HTML element using id attribute. We use #in fornt of the id attribute value */
 #container{
+    /* rgba can also be used for defining the colour value, where you can specify the value for red, gree, blue and alpha channel or opacity for the color */
     background-color: rgba(255,0,0,0.4);
     width: 1000px;
+    /* 
+    Margin is the space between the two elements 
+    To set margin for top, right, bottom and left to one value */
+    /* 
+        To set margin for top and bottom to 10px and right and left to 20px
+        if you tell both the margin-left and margin-right to be auto (automatic), 
+        then the browser puts the same amount of space on either side of your element and centers that element 
+    */  
     margin: 0 auto;
+    /*
+    Padding is the space between the walls of an element and the contents
+    To set padding for top, right, bottom and left to one value */
+
+    /*to set padding for top and bottom to 10px and right and left to 20px*/
     padding: 10px 20px;
 }
+/* Targeting an element using a class name. We use period . in front of the class name*/
 .site-header{
     border: 2px solid red;
     border-bottom: 4px dotted #00ff00;
+    /* text-align allows you to align the text left, right, center, or justified */
     text-align:center;
+    /* auto value of the height means that the element will be as high as the contents inside the element*/
     height:auto;
 }
 .logo{
+    /* we can also set 4 values for margin or padding, the first one starting from top, right, bottom and left */
     margin: 40px 0 0 0;
+    /* border-radius can be used to round the corners of any element, including images. */
     border-radius: 50%;
-    outline: 5px dotted #E7FF3C;
+    /* Outline is drawn outside the border of an element*/
+    outline: 5px dotted #e7ff3c;
 }
+/* nesting parent selector */
 .site-header h1{
+    /* color property can be used to change the font color of an element */
     color: white;
+    /* font weight can be used to control the boldness of the font. Valid values depend on the font being used. Commonly used values are normal and strong */
     font-weight: normal;
+    /* Since root element font size is 15px 4rem will be 4 x 15 = 60px */
     font-size: 4rem; /* 4 x 15 = 60px */
 }
+/* targeting multiple elements at the same time. If we need to apply same set of styles to multiple elements we can target them by using comma separated list */
 h1, h2, h3, h4, h5, h6{
+    /* 
+        font-family property is used to specify the font that is used for an element, there are many web safe fonts that are supported by different browsers. 
+        We can specify multiple fonts as fallbacks if the first font in the list is not available 
+        We can also embed a font with our web page so that our website is not dependent on the availability of the font in user's browser. We will practice this later in the course 
+    */
     font-family: Arial, Helvetica, sans-serif;
 }
 .site-header a{
+    /* remove the underline */  
     text-decoration: none;
     color: #555;
     background-color: #2ECC71;
     padding: 10px; 
+    /*
+        -border property adds a border of defined width, style and color to the targeted element
+        -border property can also be called in parts for different parts such as
+            border-width, border-style, border-color
+        -Also border for each side can be styled differently using 
+             border-top, border-right, border-bottom, border-left
+    */
+    border: 2px solid #e67e22;
+
+    /* Border radius defines the radius of the corners of a border */
+    border-radius: 6px;
+
+    /* You can also define radius of each corner starting form top-left, top-right, bottom-right then bottom-left corners */
+    border-radius: 2px 6px 10px 14px;
+
+    /* 
+        Border radius can also be defined by passing two values,
+        first value is for top-left and bottom-right and second value is for top-right and bottom-left 
+    */
+    border-radius: 0px 14px;
 }
+/* 
+    Reusable classes 
+    We can use the same class name for multiple elements to provide them with same styles
+*/
 .info{
+    /* border property can also be used in parts to specify a border on a single side */
     border-bottom: 2px solid #333;
 }
 article{
+    /* % can also be used as unit for defining sizing */
     width: 60%;
+    /* 
+        we can use display property to control display of an element, we can change a block level element to be inline or vice-versa
+        Display inline-block value will allow the elements to flow inline while keeping their block level element properties such as margin and padding etc.
+    */
     display: inline-block;
+
+    /* rem is calculated based on the root element (HTML element) font size */
+    font-size: 1.2rem; /* 1.2 x 15 = 18px */
+}
+article > h2{
+    /* em is another unit for measuring size. em stands for the element's font size. Since we are updating the font-size itself in this case em is the parent element's font size  */
+    font-size: 2em; /* 2 x 18 = 36px */
+    
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
+
+    /* 
+        using em in the following case the value will be calculated based on the font-size of this element 
+        2 x 36 = 72px
+    */
+    height: 2em; 
 }
 aside{
     width: 39%;
     display: inline-block;
+    /* vertical align can be used to change the alignment of the two inline-blocks elements, such as top, middle, bottom, etc. */
     vertical-align: top;
+    margin-top: 30px;
+    /* 
+        values for colors in css can be
+        - hex or hexadecimal starting with a #
+        - rgb Red Green Blue rgb(255,0,0)
+        - rgba Red Green Blue Alpha rgba(0,0,255,0.6)
+        - string value predefined values such as red, orange, white, black etc.
+    */
+    background-color: rgb(255,234,256);
+    /* box-shadow can be used to add a drop down shadow */
+    box-shadow: -4px 4px 6px 2px #000000;
 }
 aside img{
+    /* max width defines how wide an element can grow. Using 100% means that the element can be maximum 100% of its parent*/
     max-width: 100%;
 }
+ul.dino-list{
+    /* list-style-type is used to change the style of the bullets, setting it to none will remove the bullets from the list */
+    list-style-type: none;
+    /* the indentation of the list items in a list is due to the padding on the left, we can add padding 0 to remove that indentation */
+    padding: 0;
+    
+    /* We set font-size 0 to the parent element of the elements that we have display:inline-block; for,this is to eliminate the extra white space added between the inline-block elements */
+    font-size: 0;
+}
+.dino-list li{
+    /* display: inline; */
+    display: inline-block;
+    background-color: yellow;
+    margin-bottom: 20px;
+    width:50%;
+    padding: 20px;
+    /* We are setting the font size to 1rem to overwrite the cascading of font-size 0 form the parent element */
+    font-size: 1rem;
+    border: 4px solid black;
+    /* 
+        - box-sizing can be used to change the default setting of the box model. 
+        - By default an element's width is the width of the content area. any padding or border will be added on top of the content width. So if the width is set to 100px and the element has a 10px passing on both sides and a 2px border the total width will be 100 + 10 + 10 + 2 + 2 = 124px
+        - When the box-sizing is set to border-box the width is calculated based on the total width of the content, padding and border. So for the above example the total width will remain 100px but the content width now will be reduced to 76px so that 76 + 10 + 10 + 2 + 2 = 100px
+    */
+    box-sizing: border-box;
 
+    /* Since margin is outside the border it will add to the total space required by the list items */
+    /* margin-left: 10px; */
+}
+/*  
+    for nth-child selector you can use a numeric value to target specific item or you can use 
+    odd
+    even 
+    or some formula like 2n+1 where n starts from 0
+    The formula above will target 1, 3, 5, ...
+*/
+.dino-list li:nth-child(2){
+    text-decoration: underline;
+}
+.dino-list li:nth-child(n){
+    text-transform: uppercase;
+}
+.dino-list li:nth-child(2n){
+    background-color: pink;
+}
+figcaption{
+    /* to bold the text we can use the font-weight property */
+    font-weight: bold;
+    /* text-decoration can be used to add decoration such as underline, strike through etc. */
+    text-decoration: underline;
+    /* text-transform can be used to change the text from lowercase to uppercase etc. */
+    text-transform: uppercase;
+}
+footer p{
+    width: 100px;
+    /* Line height is the height of each line of text */
+    line-height: 1.5;
+    /* Letter spacing is the space between the individual letters in the text also referred to as kerning */
+    letter-spacing: 1px;
+}
 
+/********************************************************************
+                        MEDIA QUERIES
+*********************************************************************/
+/* 
+    A media query consists of an optional media type and zero or more expressions that limit the style sheets' scope by using media features, such as width, height, and color etc.
+    We can use logical operators to combine different media features in one query
+    Example:
+    In the media query below we are specifying that we want this query to execute  when the media is a screen
+    and when the minimum width of the scree is 768px, which means 768px or above.
+*/
+@media screen and (min-width: 768px){
+    #container{
+        background-color: #e67e22; /* Carrot */
+    }
+}
+/* 
+    In the media query below we are specifying two break points
+    So the query will execute when the screen size id more than 480px but less than 768px
 
-
-
-
-
-
-
+*/
+@media screen and (min-width: 480px) and ( max-width: 768px){
+    #container{
+        background-color: #9b59b6; /* Amethyst */
+    }
+    .site-header h1{
+        font-size: 3rem;
+    }
+}
+@media screen and (max-width: 480px){
+    #container{
+        background-color: #3498db; /* Peter river */
+    }
+    .site-header h1{
+        font-size: 2rem;
+    }
+}
+/* We can also target other medias than screen using media queries, in the example below we are targeting when the web page is being printed */
+@media print{
+    img{
+        display: none;
+    }   
+}
 

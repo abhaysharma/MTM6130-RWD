@@ -3,9 +3,20 @@
     <head>
         <meta charset="utf-8">
         <title>Awesome Dinosaurs - RWD Week 3</title>
+        <!-- the link tag used here is for linking CSS files - it needs two attributes, the href, which is the location of your css file, and the rel="stylesheet", which tells the browser that this css file is the stylesheet for the page -->
         <link href="styles/dino.css" rel="stylesheet">
+        <!-- sometimes you will also see type="text/css", but we don't use this as of HTML5 -->
+        <!-- CSS stands for Cascading Style Sheets -->
     </head>
     <body>
+        <!-- 
+        ID attribute is the unique id for an html element
+        It is best practice  not to repeat id attribute value for different elements on one page
+
+        Class is a more generic name given to a HTML Element
+        One element can have multiple classes
+        You can use same class name for multiple elements on the page
+    -->
         <div id="container" class="container">
             <header class="site-header">
                 <img src="images/dino-logo.jpg" class="logo" alt="Dino website logo"/>
@@ -22,7 +33,11 @@
                 </section>
                 <section class="info list" id="dinoList">
                     <h2 class="section-title">Other Dinosaurs</h2>
-                    <ul>
+                    <ul class="dino-list">
+                        <li class="one">Albertosaurus</li>
+                        <li class="two">Supersaurus</li>
+                        <li class="one">Albertosaurus</li>
+                        <li class="two">Supersaurus</li>
                         <li class="one">Albertosaurus</li>
                         <li class="two">Supersaurus</li>
                     </ul>
@@ -31,6 +46,7 @@
             <aside class="sidebar">
                 <figure>
                     <img src="images/ancylosaurus.jpg" alt="ancylosaurus toy" />
+                    <!-- figcaption tag is to add a caption to the image-->
                     <figcaption>Ancylosaurus</figcaption>
                 </figure>
             </aside>
