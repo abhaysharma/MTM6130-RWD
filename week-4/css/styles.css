@@ -1,0 +1,78 @@
+body{
+    /* Removing any space around the body and its content */
+    padding: 0;
+    margin: 0;
+}
+.container{
+    /* max-width specify the maximum width an element can take. it can scale down but cannot scale up than the max-width */
+    max-width:1000px;
+    margin: 0 auto;
+    padding: 0 20px;
+    border: 1px solid #ccc;
+}
+nav ul{
+    /* removing bullet points form the list items */
+    list-style-type:none;
+    /* removing indentation from the list items */
+    padding: 0;
+}
+/* targeting different states of a link using the pseduo class */
+nav a,
+nav a:link,
+nav a:visited{
+    /* removing underline from the links */
+    text-decoration: none;
+    /* setting color for the links */
+    color: #000;
+    background-color: #D4E157;
+    padding: 10px 20px;
+    display: block;
+}
+/* hover is when we use our cursor to hover over the link and focus is when we use Tab key to jomp between links */
+nav a:hover,
+nav a:focus,
+/* we are using current class on the a tag which is for the current page user is looking at */
+nav a.current{
+    background-color: #9CCC65;
+}
+/* active state for a link is when we press down the mouse to click */
+nav a:active{
+    background-color: #EC407A;
+}
+.button{
+    /* we are chaning the display property of the spans to block */
+    display: block;
+    padding: 20px;
+    margin-bottom: 10px;
+    background-color: #26C6DA;
+    border-radius: 16px 16px 0 0;
+    /* 
+        cursor property is used to change the cursor style of an element, i.e. when we hover over the element 
+        we can also use an image for cursor using url('PATH-TO-THE-IMAGE') as value for the cursor property
+
+    */
+    cursor: pointer;
+}
+.button.two{
+    border-radius: 0 0 16px 16px;
+}
+@media screen and (min-width:500px){
+    nav ul li{
+        display: inline-block;
+            /* min-width specifies the minimum width an element should have. The element can scale up from that min width based on the contents. */
+        min-width: 120px;
+    }
+    nav a{
+        border-radius: 4px 16px;
+    }
+    .button{
+        display: inline-block;
+        border-radius: 16px 0 0 16px;
+    }
+    .button.two{
+        border-radius: 0 16px 16px 0;
+    }
+}
+
+
+

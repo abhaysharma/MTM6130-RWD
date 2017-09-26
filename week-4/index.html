@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Week 4 HTML Links, Navigation and Responsive Menu</title>
+        <meta charset="utf-8">
+        <link href="css/styles.css" rel="stylesheet">
+    </head>
+    <body>
+        <div class="container">
+            <header>
+                <h1>Week 4 HTML</h1>
+                <!-- 
+                Navigation in its basic form is list of links to other pages of the website, which helps users to navigate through our site
+                To give the links a semantical meaning we use nav tag
+                since it is a list of links we add a ul tag to give it a structure, also li is a block level element and helps to display one anchor per line
+                -->
+                <nav>
+                    <!-- since it is a list of links we add a ul tag to give it a structure, also li is a block level element and helps to display one anchor per line -->
+                    <ul>
+                        <!-- We are adding a class of current to the current page link in the navigation -->
+                        <li><a class="current" href="index.html">Home</a></li>
+                        <li><a href="about-us.html">About Us</a></li>
+                        <li><a href="projects.html">Projects</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </nav>
+            </header>
+            <article>
+                <!-- span is an inline element. It does not give any special meaning to the contents and is useful to wrap other elements to apply any styles or interactivity to it  -->
+                <span class="button one">Our Service</span>
+                <span class="button two">Case Studies</span>
+            </article>
+            <aside></aside>
+            <footer></footer>
+        </div>
+    </body>
+</html>
