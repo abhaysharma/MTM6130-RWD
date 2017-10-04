@@ -1,0 +1,46 @@
+.container img{
+    /*float the image to make it sit next to the text*/
+    float:right;
+}
+p{
+    border: 2px solid black;
+    /* Clear right applied on an element will make it to see the height of the elements that have float set to right around it. 
+    Similarly if we have clear left it will make the element see the height of the floated left elements around it */
+    clear:right;
+}
+.boxes{
+    border: 1px solid black;
+}
+.boxes div{
+    width: 200px;
+    height: 200px;
+    /* This will float the element to the left */
+    float: left;
+}
+.box1{
+    background-color: red;
+}
+.box2{
+    background-color: yellow;
+}
+.box3{
+    clear:left;
+    background-color: green;
+}
+/*clearfix - giving an element this class will make it see the height of the floated elements inside of it
+We use this class on the parent element if the child of the element are floated
+*/
+.clearfix:after{
+    content:"";
+    display: table;
+    clear:both;
+}
+
+
+
+
+
+
+
+
+

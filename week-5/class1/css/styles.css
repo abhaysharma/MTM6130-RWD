@@ -1,0 +1,102 @@
+/* We have used tag names, class names with a . and id names using a # to target elements in our CSS from our web page. In this CSS we will be looking into more advanced selectors to select/target elements. */
+
+body{
+	width: 1020px;
+	margin: 0 auto;
+	color: #666;
+}
+/* attribute selector, this selector can be used to target any element using its attribute and attribute value 
+In the example below we are targeting an anchor tag with href attribute set to http://google.com
+*/
+a[href="http://google.com"]{
+	color: black;
+	font-size: 1.5em; /* 16x1.5 = 24px */
+}
+/*
+In this next example we are targeting an anchor tag with href attribute set to fruits. The * in front of the = tells the css to target element that contains fruits in the value it could be fav-fruits, #fruits etc.
+*/
+a[href*="fruits"]{
+	background-color: orange;
+	padding: 10px;
+}
+/* The :before sudo class can be used to target the before element inside an element. Before element is invisible until we add some content or styles to it and appears before the content of an element. */
+.items li:before{
+	content: ">> ";
+}
+/* Similar to :before, :after targets the after sudo element and appears after the content of the elements */
+.items li:after{
+	display: inline-block;
+	content: "";
+	width: 0;
+	height: 0;
+	border-left:6px solid black;
+	border-top:6px solid transparent;
+	border-bottom:6px solid transparent;
+	margin-left: 5px;
+}
+.locations ol li:first-child{
+	text-decoration:line-through;
+}
+.locations ol li:last-child{
+	font-weight: bold;
+}
+.locations ol li:nth-child(odd){
+	background-color: #ccc;
+}
+.locations ol li:nth-child(even){
+	background-color: #eee;
+}
+/* * is known as universal selector, it will target all the htlml elements inside the ol in the example below */
+.locations ol *{
+	padding: 10px 0;
+}
+/* In this example using * we can target all the elements that are in our html page, this will target each tag on the page.
+using *:before and *:after we are targeting the before and after sudo elements of each element on the page */
+*,
+*:after,
+*:before{
+	/*border: 1px solid red;*/
+	box-sizing: border-box;
+}
+.locations,
+.cupcakes{
+	width: 50%;
+	float: left;
+	padding: 20px;
+	border: 1px solid #666;
+}
+.fruits{
+	clear: both;
+}
+.fruits ul{
+	list-style-type: none;
+	padding: 0;
+}
+.fruits ul li{
+	float: left;
+	width: 20%;
+	border-right: 1px solid;
+	text-align: center;
+}
+.fruits ul li:last-child{
+	border:none;
+}
+.fruits ul li a{
+	display: block;
+	color: inherit;
+	text-decoration: none;
+	background-color: cyan;
+	padding: 20px;
+}
+.fruits ul li a:hover{
+	background-color: orange;
+}
+
+
+
+
+
+
+
+
+

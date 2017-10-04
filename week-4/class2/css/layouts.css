@@ -1,0 +1,44 @@
+/* In this CSS we are going to create a simple page layout, using css floats and percent width */
+.container{
+    /* Setting max-width will allow an element to be responsive below the max width and will stop it from expanding further to the max width*/
+    max-width: 1000px;
+    /* margin auto on left and right will center the element on the page  */
+    margin: 0 auto;
+}
+.site-header,
+.main-content,
+.sidebar,
+.site-footer{
+    /* since our layout elements are empty we are setting a fixed height for each */
+    height: 300px;
+}
+.site-header{
+    background-color: deepskyblue;
+}
+.main-content{
+    background-color:blueviolet;
+}
+.sidebar{
+    background-color: coral;
+}
+.site-footer{
+    background-color: darkgoldenrod;
+}
+.clearfix:after{
+    content: "";
+    display:table;
+    clear:both;
+}
+@media screen and (min-width:480px){
+    .main-content{
+        width:70%;
+        float:left;
+    }
+    .sidebar{
+        width: 30%;
+        float:left;
+    }
+}
+
+
+
