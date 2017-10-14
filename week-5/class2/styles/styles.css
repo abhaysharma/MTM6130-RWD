@@ -1,0 +1,387 @@
+@charset "utf-8";
+/* CSS Document */
+
+.wrapper{
+	width: 800px;	
+	margin: 0 auto;
+}
+.transformers,
+.transitions,
+.animations,
+.shapes{
+	border: 1px solid #999;
+	margin: 20px 0;
+	padding: 0 0;
+}
+.box{
+	width: 200px;	
+	height: 200px;
+}
+
+.b1{
+	background-color: #0074D9; /*blue*/
+}
+.b2{
+	background-color: #FF851B; /*orange*/
+}
+.b3{
+	background-color: #01FF70;/*green*/
+}
+.b4{
+	background-color:#B10DC9;/*purple*/
+}
+.b5{
+	background-color: #7FDBFF;/*light blue*/
+}
+
+.transformers .b1:hover{
+	-webkit-transform: translate(20px, 30px);
+	transform: translate(20px, 30px);
+	/*
+		We can also define translateX() or translateY separately
+	*/
+}
+
+.transformers .b2:hover{
+	transform: scale(1.2,1.2);
+	/* we can also define scaleX and scaleY separately*/
+}
+.transformers .b3{
+	transform: rotate(45deg);
+	transform-origin: right bottom;
+	/* 
+		Transform origin can be set using 2 or 3 values
+		x, y and z
+		units can be x-axis left, right, center, length, %
+		y-axis top, bottom, center, length, %
+		z-axis length
+	*/
+}
+.transformers .b4{
+	/*We can define multiple transforms at once by separating them with space*/
+	transform: skewX(45deg) skewY(30deg) ;
+}
+.transformers .b5{
+	transform: rotate3d(1,1,1,20deg);
+	/* 
+		rotate3d(x,y,z,angle) - remember in rotate3d the values for x, y, z are either 0 or 1 to turn it on an doff and 4th value is for the angle
+		Also, we can use
+		translate3d(x,y,z)
+		scale3d(x,y,z)
+	*/
+}
+
+/****************************************************
+				Transitions
+*****************************************************/
+.transitions .b1{
+	/*
+		Browser prefixes are to support older versions of different browsers
+		-webkit- is for chrome and safari
+		-moz- is for firefor
+		-o- is for opera
+	*/
+	-webkit-transition: width 1000ms ease-in-out;
+	-moz-transition: width 1000ms ease-in-out;
+	-o-transition: width 1000ms ease-in-out;
+	/* 
+		Transitions are defined for different properties of an element
+		the first value is property
+		second is time
+		third is the transition-timing-funtion effect - by default linear
+	*/
+	transition: width 1000ms ease-in-out;
+	/*
+		we can aslo define each transition function individually
+		transition-property: width;
+	    transition-duration: 2s;
+	    transition-timing-function: linear;
+	*/
+}
+.transitions .b1:hover{
+	width: 400px;
+	height: 150px;
+}
+.transitions .b2{
+	/* Multiple transitions can be defined comma separated */
+	-webkit-transition: width 1000ms, height 500ms;
+	-moz-transition: width 1000ms, height 500ms;
+	-o-transition: width 1000ms,  height 500ms;
+	transition: width 1000ms,  height 500ms;
+	/* We can define transition timing function separately as well*/
+	transition-timing-function: ease-out;
+
+	/* transition-delay can delay the transition by given time */
+	-webkit-transition-delay: .5s;
+	-moz-transition-delay: .5s;
+	-o-transition-delay: .5s;
+	transition-delay: .5s;
+}
+.transitions .b2:hover{
+	width: 250px;
+	height: 250px;
+}
+.transitions .b3{
+	/* Also we can define 
+		transition-property,
+		transition-duration,
+		transition-timing-function  and 
+		transition-delay in one place respectively 
+	*/
+	-webkit-transition: -webkit-transform 1s ease-in 1s;
+	-moz-transition: -moz-transform 1s ease-in 1s;
+	-o-transition: -o-transform 1s ease-in 1s;
+	transition: transform 1s ease-in 1s;
+}
+.transitions .b3:hover{
+	-webkit-transform: translate(20px, 20px);
+	-moz-transform: translate(20px, 20px);
+	-o-transform: translate(20px, 20px);
+	transform: translate(20px, 20px);
+}
+.transitions .b4{
+	-webkit-transition: all 1s ease-in;
+	-moz-transition: all 1s ease-in;
+	-o-transition: all 1s ease-in;
+	transition: all 1s ease-in;
+}
+.transitions .b4:hover{
+	background-color: #FF851B; /*orange*/
+	border-radius: 30px;
+
+}
+
+
+
+
+/*******************************************
+		Animations
+********************************************/
+/* 
+	CSS Animation can used to change as many styles of an element as many times we want
+	To use animation we need to define keyframes for animation by using @keyframes rule
+	Then we need to call the defined animation inside an element using animation-name and animation-duration properties
+*/
+
+/* We have to use browser prefixes for webkit and moz to support older versions */
+@-webkit-keyframes changeColor{
+	from{	background-color: red;	}
+	to{		background-color: green;	}
+}
+@-moz-keyframes changeColor{
+	from{	background-color: red;	}
+	to{		background-color: green;	}
+}
+/* using @keyframes rule we define name of the animation */
+@keyframes changeColor{
+	/* insdie the rule we use "from" and "to" to provide values for the starting and ending states */
+	from{ 	background-color: red;	}
+	to{ 	background-color: green;	}
+}
+
+.animations .b1{
+	/* 
+		we can call the defined animation inside an element using animation-name and animation-duration properties
+	*/
+	
+	/* animation name specifies the name of the animation to be applied to the targeted element */
+	-webkit-animation-name: changeColor;
+	-moz-animation-name: changeColor;
+	animation-name: changeColor;
+
+	/*	-------------
+			Note	
+		-------------
+		We do not need to use all the browser prefixes for each css3 value.
+		Using browser prefixes depends on the support for a particular property.
+		Normally you would want to support any browser based on its usage
+		Check caniuse.com regularly to see the support for your css properties
+	*/
+
+
+	/* animation duration specifies the time for the completion of the animation */
+	-webkit-animation-duration: 2s;
+	-moz-animation-duration: 2s;
+	animation-duration: 2s;
+
+	/* 
+		animation-fill-mode property defines the style of the element when the animation is finished or there is a delay 
+		values for fill mode can be backwards, forwards, none and both
+	*/
+	-webkit-animation-fill-mode: forwards;
+	-moz-animation-fill-mode: forwards;
+	animation-fill-mode: forwards;
+}
+
+/* 
+	from represents 0% completion and to represents 100% completion 
+	We can also use % to define style changes for different parts of the animation like, 0%, 25%, 50%, 70%, 100% 
+*/
+
+.animations .b2{
+	position: relative;
+	top: 0;
+	left: 0;
+
+	-webkit-animation-name: moveAround;
+	-moz-animation-name: moveAround;
+	animation-name: moveAround;
+	
+	-webkit-animation-duration: 4s;
+	-moz-animation-duration: 4s;
+	animation-duration: 4s;
+
+	/* we can also add a delay to the animation using animation-delay property */
+	-webkit-animation-delay: 2s;
+	-moz-animation-delay: 2s;
+	animation-delay: 2s;
+
+	/* 
+		By using animation-iteration-count property we can define how many times an animation should run
+		Values for animation-iteration-count can be-
+		Numeric for number of times
+		infinite - to keep looping though the animation
+	*/
+	-webkit-animation-iteration-count: 3;
+	-moz-animation-iteration-count: 3;
+	animation-iteration-count: 3;
+
+	/* 
+		we can also specify animation direction 
+		values for animation-direction can be
+		reverse - reverses the animation and runs it starting from "to" or 100% and ending at "from" or 0%
+		alternate - alternates between the normal and reverse directions
+		alternate-reverse - this is combination of alternate and reverse. Meaning the first time animation will start in reverse and then keep alternating
+	*/
+	-webkit-animation-direction: alternate;
+	-moz-animation-direction: alternate;
+	animation-direction: alternate;
+	
+}
+
+@-webkit-keyframes moveAround{
+	0%{ left: 0; top: 0;}
+	25%{ left: 200px; top: 0; }
+	50%{ left: 200px; top: 200px; }
+	75%{ left: 0; top: 200px; }
+	100%{ left: 0; top: 0; }
+}
+
+@-moz-keyframes moveAround{
+	0%{ left: 0; top: 0;}
+	25%{ left: 200px; top: 0; }
+	50%{ left: 200px; top: 200px; }
+	75%{ left: 0; top: 200px; }
+	100%{ left: 0; top: 0; }
+}
+
+@keyframes moveAround{
+	0%{ left: 0; top: 0;}
+	25%{ left: 200px; top: 0; }
+	50%{ left: 200px; top: 200px; }
+	75%{ left: 0; top: 200px; }
+	100%{ left: 0; top: 0; }
+}
+
+.animations .b3{
+	-webkit-animation: transformMe;
+	-moz-animation: transformMe;
+	animation: transformMe;
+	
+	-webkit-animation-duration: 3s;
+	-moz-animation-duration: 3s;
+	animation-duration: 3s;
+	
+	/*
+		Just as transitions we have a timing function for animations as well
+		we can use animation-timing-function to define these properties
+	*/
+	-webkit-animation-timing-function: ease-in-out;
+	-moz-animation-timing-function: ease-in-out;
+	animation-timing-function: ease-in-out;
+
+	-webkit-animation-iteration-count: 6;
+	-moz-animation-iteration-count: 6;
+	animation-iteration-count: 6;
+
+}
+
+@-webkit-keyframes transformMe{
+	0%{ transform: scale(.5,.5) rotateX(0) translateX(0); }
+	50%{ transform: scale(1,1) rotateX(180deg) translateX(600px); }
+	100%{ transform: scale(.5,.5) rotateX(0) translateX(0); }
+}
+
+@-moz-keyframes transformMe{
+	0%{ transform: scale(.5,.5) rotateX(0) translateX(0); }
+	50%{ transform: scale(1,1) rotateX(180deg) translateX(600px); }
+	100%{ transform: scale(.5,.5) rotateY(0) rotateX(0) translateY(0); }
+}
+
+@keyframes transformMe{
+	0%{ transform: scale(.5,.5) rotateX(0) translateX(0); }
+	50%{ transform: scale(1,1) rotateX(180deg) translateX(600px); }
+	100%{ transform: scale(.5,.5) rotateX(0) translateX(0); }
+}
+
+.animations .b4{
+	/* 
+	Using animation shorthand notation 
+	The values are assigned in following order
+	  name duration   delay iteration-count direction fill-mode timing
+	{---required----}{---------------optional--------------------------}
+	*/
+	-webkit-animation: transformMe 3s 3s infinite alternate backwards linear;
+	-moz-animation: transformMe 3s 3s infinite alternate backwards linear;
+	animation: transformMe 3s 3s infinite alternate backwards linear;
+}
+
+
+/**************************************
+		Common Shapes	
+****************************************/
+/* circle */
+.shapes .b1{
+	width: 200px;
+	height:200px;
+	border-radius: 50%;
+}
+/* arrow down */
+.shapes .b2{
+	width: 0;
+	height: 0;
+	border-top: 50px solid #000;
+	border-right: 50px solid transparent;
+	border-left: 50px solid transparent;
+	background-color: transparent;
+}
+/* Corner triangle */
+.shapes .b3{
+	width: 0;
+	height: 0;
+	border-top: 50px solid pink;
+	border-left: 50px solid transparent;
+	background: none;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
