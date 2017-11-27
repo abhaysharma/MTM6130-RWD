@@ -1,0 +1,108 @@
+/* Remove any margin and padding from the body element */
+body{
+	margin: 0;
+	padding: 0;
+}
+/* using universal selector set the box-sizing for every element to border-box*/
+*, *:after, *:before{
+	box-sizing: border-box;
+}
+/* Set a maximum width on the col-container and use margin 0 auto to center the block on page */
+.col-container{
+	max-width: 960px;
+	margin: 0 auto;
+}
+/* set width of each image inside col-container to 100% of its parent */
+.col-container img{
+	width: 100%;
+}
+/* Clearfix */
+.clearfix:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/*
+Creating Equally Spaced columns
+-------------------------------
+Number of Columns - First Column = Remaining Columns
+
+Remaining Columns * Margin Spacing = Total Margin Spacing
+
+Container Width - Total Margin Spacing = Remaining Width
+
+Remaining Width / Total Number of Columns = Width of Each Column
+*/
+
+/* adding a media query to target screen size 500px and above */
+@media screen and (min-width:500px){
+	.col{
+		float: left;
+	}
+	/* 
+		2 - 1 = 1
+		1 x 1 = 1
+		100% - 1 = 99%
+		99% / 2 = 49.5
+	*/
+	/* Using nth-child selector select every element with class col and set the width and margin */
+	.col:nth-child(n){
+		width: 49.5%;
+		margin-left:1%;
+	}
+	/* target every odd element with class col and remove the margin on the left. Since we have 2 columns, every odd element will be the first one in a row. */
+	.col:nth-child(odd){
+		margin-left: 0;
+	}
+}
+
+/* adding a media query to target screen size 960px and above */
+@media screen and (min-width:960px){
+	/*
+		3 - 1 = 2
+		2 * 5px = 10px
+		960px - 10px = 950px
+		950px / 3 = 316.67
+	*/
+	.col:nth-child(n){
+		width: 316.66px;
+		margin-left:5px;
+	}
+	/* remove margin left from first element and every 4th element with calss col */
+	/*
+	.col:first-child,
+	.col:nth-child(4n){
+		margin-left: 0;
+	}
+		The above code will not work if we have more than 6 image blocks,
+		since the sequence of blocks that will come on the first position is 1, 4, 7, 10 .. and so on.
+	*/
+
+	/* Here is the solution */
+	.col:nth-child(3n - 2){
+		margin-left: 0;
+	}
+	/* using 3n - 2 will give us the following values for n = 1, 2, 3, 4... 
+	we will get 3x1 - 2 = 1, 3x2 - 2  = 4, 3x3 - 3 = 7, 3x4 - 2 = 10..
+	*/
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
