@@ -1,0 +1,107 @@
+/* Using universal selector set box-sizing to border-box */
+*,*:after,*:before{ 
+	box-sizing: border-box; 
+}
+body{
+	/* Set font-family of the body element to Roboto */
+	font-family: "Roboto", sans-serif;
+	margin-top: 50px;
+}
+h1{
+	background: #111;
+	margin: 0;
+	width: 100%;
+	text-align: center;
+	color: white;
+	text-transform: uppercase;
+	/* Position fixed sets an element to be fixed to the given position in the viewport. */
+	position: fixed;
+	top: 0;
+	left: 0;
+	/* z-ndex defiens the value for the z axis of an element, higher the z-index more on top of the other elements it will be */
+	z-index: 999;
+}
+.container{
+	width: 800px;
+	margin: 20px auto;
+	position: relative;
+	/* Overflow property is used to control the display of the */
+	/* overflow: scroll; */
+	overflow: hidden;
+}
+.container p{
+	position: absolute;
+	height: 100%;
+	width: 100%;
+	bottom: 0;
+	background: #acacac;
+	margin: 0;
+	padding: 10px;
+	left: 100%;
+	-webkit-transition: all 500ms ease-in;
+	-moz-transition: all 500ms ease-in;
+	transition: all 500ms ease-in;
+}
+p:before{
+	/* Using css entities for the content, 
+	the entity used here is for a right pointing angle
+	Here is list of other css entities https://www.w3schools.com/cssref/css_entities.asp
+	*/
+	content:"\2039";
+	display: block;
+	position: absolute;
+	left: -20px;
+	top: 50%;
+	font-size: 50px;
+	margin-top: -40px;
+	color:white;
+}
+.container:hover p{
+	left: 0;
+}
+
+/**********
+   Circles
+***********/
+.circles{
+	width: 300px;
+	margin: 0 auto;
+	position: relative;
+}
+.circle{
+	width: 200px;
+	height: 200px;
+	position: absolute;
+	border-radius:50%;
+}
+.one{
+	background: red;
+}
+.two{
+	background: blue;
+	left: 100px;
+	z-index: 1;
+}
+.three{
+	background: green;
+	left: 100px;
+	top: 100px;
+	z-index: 2;
+}
+.four{
+	background: yellow;
+	top:100px;
+	z-index:3;
+}
+.circle:hover{
+	z-index: 4;
+}
+
+
+
+
+
+
+
+
+
