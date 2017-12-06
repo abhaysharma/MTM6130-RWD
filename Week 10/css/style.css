@@ -1,0 +1,151 @@
+body{
+	margin: 0;
+	padding: 0;
+	font-family: Arial, Helvetica, sans-serif;
+}
+/* Center the layout at 1024px */
+.container{
+	max-width: 1024px;
+	margin: 0 auto;
+}
+/* Basic styling for the table*/
+table{
+	margin: 20px 0;
+	border: 1px solid;
+	border-collapse: collapse;
+}
+th,td{
+	border: 1px solid;
+	padding: 10px 20px;
+}
+
+/* Add background-color to alternating rows to increase readability */
+tbody tr:nth-child(even){
+	background-color: #acacac;
+}
+/* Reduce the font size of footer */
+tfoot{
+	font-size: .75em; /* 1em = 16px, .75em = .75 x 16 = 12px */
+}
+
+/****************************
+		Form Styles 
+*****************************/
+.form-wrap{
+	background-color: #9b59b6; /* Amethyst */
+	padding: 20px;
+}
+.form-wrap h2{
+	color: white;
+}
+.form-wrap form > div{
+	margin: 20px 0;
+}
+/*target all the labels on the page, by tag name*/
+label{
+	font-size: 1.5em;
+	color: #ecf0f1; /* Clouds */
+	font-family: Tahoma, Geneva, sans-serif;
+}
+textarea,
+input{
+	padding: 5px;
+	color: #ecf0f1; /* Clouds */
+	
+	font-size:1.15em; /*font size determines the height of an input element - you cannot set height*/
+	border:none; /*get rid of border*/
+	border-bottom:3px dotted black; /*then add our own border*/
+	width:280px;
+	/*using padding we can put space between the edge of the field and the text*/
+	padding-left:10px;
+	/*change the background colour*/
+	background:rgba(0,0,0,0); /*mostly transparent black - you can also add a background image - rgba = red, green, blue, alpha*/
+}
+/* style the focus state of the input differently for user orientation */
+input:focus,
+textarea:focus{
+	/* remove the default blurry blue outline */
+	outline: none;
+	/* change the border color */
+	border-color: rgb(255,124,0);
+}
+/* style the inputs that has a type of number differently */
+input[type="number"]{
+	min-width: 50px;
+	width: 50px;
+}
+/* change the width of radio and checkbox input types to be auto */
+input[type="radio"],
+input[type="checkbox"]{
+	width: auto;
+}
+/* remove the background styles and border from input type color */
+input[type="color"]{
+	background: none;
+	border: none;
+	width: 50px;
+	height: 50px;
+	vertical-align: top;
+}
+/*instead of styling radio buttons, we style another element to act as a proxy
+using the + selector, we can select elements that directly follow other elements - in this case, we style div elements that directly follow radio input elements*/
+input[type="radio"] + div{
+	border: 2px solid rgb(124,0,0);
+	width:20px;
+	height:20px;
+	display:inline-block; /*so they behave more like images - can have a width and height, but won't push things down to the next line*/	
+	border-radius: 50%;
+}
+
+/*we can also style based on whether a radio button or checkbox is checked, using the pseudo-class :checked*/
+input:checked[type="radio"] + div{
+	background-color: rgb(255,124,0);
+}
+
+/*then hide the radio button*/
+input[type="radio"]{
+	display: none;
+}
+select{
+	font-size:1.15em;
+	background: transparent;
+	color: white;
+	border: 2px solid rgb(124,0,0);
+}
+/* target the textarea element */
+textarea{
+	/* min-height will provide a minimum height value to the textarea and will stop user to resize the textarea further down */
+	min-height: 120px;
+	/* max-height will provide a maximum height value to the textarea and will stop user from stretching the height */
+	max-height: 120px;
+	/* set height value */
+	height: 120px;
+
+	/* min-width will provide a minimum width value to the textarea and will stop user to resize the textarea further down */
+	min-width: 280px;
+	/* max-width will provide a maximum width value to the textarea and will stop user from stretching the width */
+	max-width: 280px;
+	/* set width value */
+	width: 280px;
+
+	/* setting vertical align to top for textarea will make the lable next to it align with its top */
+	vertical-align: top;
+	border: 3px dotted black;
+}
+button{
+	background-color: #3498db; /* Peter River */
+	border: 4px solid black;
+	padding: 10px 20px;
+	color: #ecf0f1; /* Clouds */
+	font-size: 1.25em;
+	/* transform the button text to upper case letters */
+	text-transform: uppercase;
+	/* add some kerning to the letters */
+	letter-spacing: .1em;
+	cursor: pointer;
+}
+/* Style the disabled state of the button different*/
+button:disabled{
+	background-color: grey;
+	cursor: unset;
+}

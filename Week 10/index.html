@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Week 10 - HTML Tables and Forms</title>
+	<meta charset="utf-8">
+	<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+	<article class="container">
+		<!-- An article must contain a valid heading -->
+		<h1>HTML Forms and Tables</h1>
+		<!-- Adding a section into the article -->
+		<section class="table-wrap">
+			<h2>HTML Tables</h2>
+			<!-- HTML tables start with a table tag -->
+			<table>
+				<!-- Each table can contain a caption, thead, tbody, and tfoot as its child -->
+				<!-- table caption is used to provide context to the table content -->
+				<caption>Pricing</caption>
+				<!-- thead tag contains heading level row of a table which has headers for each column -->
+				<thead>
+					<!-- tr tag contains a single row in a table -->
+					<tr>
+						<!-- th tag is used to specify a heading of a column -->
+						<th>Item</th>
+						<th>Price in CAD</th>
+					</tr>
+				</thead>
+				<!-- tbody contains content of a table -->
+				<tbody>
+					<tr>
+						<!-- td tag contains table data -->
+						<td>Espresso</td>
+						<td>&dollar;3.5</td>
+					</tr>
+					<tr>
+						<td>Latte</td>
+						<td>&dollar;4</td>
+					</tr>
+				</tbody>
+				<!-- tfoot tag is used to define the table footer this is considered as supporting information and is least important in a table -->
+				<tfoot>
+					<tr>
+						<!-- adding a colspan attribute can allow a single cell of a column to take width of 2 or more columns based on its value and up-to the maximum number of colums in a table -->
+						<td colspan="2">*Bring your cup and get a 5% discount</td>
+					</tr>
+				</tfoot>
+			</table>
+			<table>
+				<caption>Student Information</caption>
+				<thead>
+					<tr>
+						<!-- Similar to colspan row span can allow a single cell of a column to stretch vertically to 2 or more rows depending on its value and up to maximum number of rows available -->
+						<th rowspan="2">Name</th>
+						<th colspan="2">Grades</th>
+					</tr>
+					<tr>
+						<th>Maths</th>
+						<th>Science</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>Ron</td>
+						<td>20/20</td>
+						<td>20/20</td>
+					</tr>
+					<tr>
+						<td>Bob</td>
+						<td>16/20</td>
+						<td>15/20</td>
+					</tr>
+					<tr>
+						<td>Scott</td>
+						<td>18/20</td>
+						<td>19/20</td>
+					</tr>
+				</tbody>
+			</table>
+		</section>
+		<section class="form-wrap">
+			<h2>HTML Forms</h2>
+			<!--
+			Forms require two things to be valid:
+				the 'action' - where the data goes when the user hits submit
+				the 'method' - how the data gets there
+					the 'get' method sends data via the query string (by adding it to the end of your address in the browser)
+					the 'post' method sends a little piece of encrypted data along to the server
+			-->
+			<form id="htmlForm" action="somephppage.php" method="get">
+				<div>
+					<!--
+						all form fields should have a label associated with them - the 'for' attribute of the label should match the 'id' of the form field.
+						when you click on the label, you activate the form field (really obvious with checkboxes, but basically means you start typing in a text field).
+					-->
+					<label for="firstName">First Name: </label>
+					<!--
+						the 'input' field can have many different types - text allows your user to enter a single line of text
+						all form fields should have a name attribute, which the server uses to figure out which field the data is from
+					-->
+					<input type="text" name="firstName" id="firstName" placeholder="James" required value="Mr.">
+					<!--
+						the placeholder attribute adds text that disappears when the user starts typing
+						the required attribute will force your browser to not submit unless the user has entered something in the field (it doesn't need a value)
+						maxlength will limit the number of characters the user can type
+					-->
+				</div>
+				<div>
+					<label for="lastName">Last Name: </label>
+					<!-- 
+					value is the actual contents of the field (what the user typed), but you can use it to put contents into the field.  it overrides the placeholder
+					-->
+					<input type="text" name="lastName" id="lastName" placeholder="Bond" maxlength="20">
+				</div>
+				
+				<div>
+				   <label for="pass">Password: </label>
+					<!-- the password field is like the text field, but hides the content being added and shows only bullets -->
+				   <input type="password" name="pass" id="pass">
+				</div>
+				
+				<div>
+					<!-- the text area allows for a multi-line submission.  it can be resized by the user (which sometimes screws up your design) -->
+					<label for="summary">Summary: </label>
+					<textarea name="summary" id="summary"></textarea>
+					<!-- the text area is a little different from other form elements - whatever you type inbetween the open and close tags will show up inside the field, including white space - so, if there is nothing to start in your text area, don't leave any space between the tags -->
+				</div>
+				
+				<!-- the fieldset segments a section of your form - in addition to drawing a nice box around it, it also means you can access these fields as an array on the server -->
+				<fieldset>
+					<!-- the fieldset can have a legend, which puts a title in the border -->
+					<legend>Select Our Free Services</legend>
+					
+					<div>
+						<!-- the checkbox is exactly what it says it is -->
+						<label for="spam">Spam me forever: <input type="checkbox" name="spam" id="spam"></label>
+						<!-- with labels, you can also surround the field and a piece of text with the label to directly associate that label with the field -->
+						<label for="sell">Sell all my information: <input type="checkbox" name="sell" id="sell" checked></label>
+						<!-- if you want to start a checkbox off checked, give it the attribute checked (if you don't want it to start checked, don't give it the attribute) -->
+					</div>
+				</fieldset>
+				
+				<div>
+					<!-- radio buttons are meant to form a set - out of the set, the user can only have one selected -->
+					<h5>Do you like forms?</h5>
+					<label for="yes">Yes: 
+						<input type="radio" name="forms" id="yes" checked value="yes">
+						<div></div>
+					</label>
+					<label for="no">No: 
+						<input type="radio" name="forms" id="no" value="no">
+						<div></div>
+					</label>
+					<label for="typing">Too much typing: 
+						<input type="radio" name="forms" id="typing" value="too much">
+						<div></div>
+					</label>
+					<!-- it is the name that links radio buttons together - all radio buttons in a set have to have the same name, so our ids have to be different in this case
+					radio buttons should have a value attribute, so the server knows which button you have selected (and you can do something about it) -->
+					
+				</div>
+				
+				<div>
+					<label for="favFood">Fav. Food:</label>
+					<!-- the dropdown menu is called select - a label here is not necessary, but you can have one if you want -->
+					<select name="favFood" id="favFood" multiple>
+						<!-- inside of the select element we define options, which are the things the user can select -->
+						<optgroup label="Dessert">
+							<option value="cc">Cheese Cake</option>
+							<option value="ic" selected>Ice Cream</option>
+							<option value="rc">Rum Cake</option>
+						</optgroup>
+						<!-- the value, usually a code of some kind, will be used by the server to process this info - while the text is what the user actually sees 
+						the selected attribute will start one item as selected (by default, the first item starts as selected) -->
+						<optgroup label="lunch">
+							<option value="gc">Grilled Cheese</option>
+							<option value="pt">Poutine</option>
+						</optgroup>
+					</select>
+				</div>
+				
+				<!-- required and placeholder are both added by HTML5 - you also have 'autofocus', which will make the field active when the browser first loads -->
+				<label for="userName">Type Username: </label>
+				<input type="text" name="userName" id="userName" autofocus>
+				
+				<div>
+					<!-- HTML5 also added a series of specific text elements which the browser will validate, such as email, phone, and url -->
+					<label for="em">Email:</label>
+					<input type="email" name="em" id="em">
+					<!-- if the field is not blank, and the user tries to submit the form, the browser will check to see if the text entered matches a valid email address -->
+				</div>
+				<div>
+					<label for="ur">URL:</label>
+					<input type="url" name="ur" id="ur">
+					<!-- this looks for a valid web address (requires the full path, including http:// or https:// )-->
+				</div>
+				<div>
+					<label for="num">Pick a number:</label>
+					<input type="number" name="num" id="num">
+					<!-- the number field will give the user a spinner (on most browsers) to pick a number - you can add some control to this spinner - min is the lowest allowed value, max is the highest, 'step' is how much it jumps by each click, and 'value' is the starting number -->
+					<label for="num2">Pick another number:</label>
+					<input type="number" name="num2" id="num2" min="-18" max="22" step="2" value="6">
+				</div>            
+				<div>
+					<!-- the type 'range' gives us a slider - IE does a particularly nice job of this one -->
+					<label for="ra">Number Slider:</label>
+					<input type="range" name="ra" id="ra" min="0" max="20" value="8" step="4">
+					<span id="numDisplay">8</span>
+				</div>
+				<div>
+					<!-- there are a number of date elements, though most browsers only support 'date', there is also 'month', 'week', and 'time' - date should bring up a calendar date picker -->
+					<label for="da">When?</label> 
+					<input type="date" name="da" id="da">
+				</div>
+				<div>
+					<!-- the last is the colour picker element, which brings up a window to allow the user to choose a colour -->
+					<label for="co">Colour picker:</label>
+					<input type="color" name="co" id="co">
+				</div>
+				
+				<div>
+					<!-- the submit button will submit whatever form it's inside of -->
+					<!-- <input type="submit" name="btnSubmit" id="btnSubmit" value="Submit!"> -->
+					<button type="submit" disabled>Submit</button>
+					<!-- disabled is a boolean attribute that can be used with any input field, it makes the input field disabled and users cannot interact with it. -->
+					<button type="reset">Reset</button>
+				</div>   
+			</form>
+		</section>
+	</article>
+	<script>
+		// this is a single line comment in javaScript using two forward slash
+		//use javaScript to display the value of the range slider when it changes
+		/*
+			- We start by calling the keyword document that will target our HTML document
+			- Next we run a querySelector function on it and pass that function a value to look for .querySelector("#ra")
+			- Query selector function will find the element with id ra on our document
+			using onchange event listener we listen for an onchange event, when the change happens we run a function
+		*/
+		document.querySelector("#ra").onchange = function(){
+			/* 
+				- Inside the function we start by targeting the document and running the querySelector function on it to find the element with ID of numDisplay
+				- Once we have the element selected target the innerHTML property and set it equal to
+				- To set the value we use the keyword "this", this keyword contains a reference to the element that called the function which is running.
+				- Next we access the property value of the element that called the function that is running 
+			*/
+			document.querySelector("#numDisplay").innerHTML = this.value;   
+		}
+	</script>
+</body>
+</html>
